@@ -9,3 +9,4 @@ config/hardware_id.txt
 nanosip.db
 licenca.py
 scripts/check_license.py
+setup.sh
