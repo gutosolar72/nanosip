@@ -3,3 +3,4 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 09 1 * * *      root    /opt/nanosip/venv/bin/python3 /opt/nanosip/scripts/check_license.pyc
 0 3 * * *       root    /opt/nanosip/scripts/cleanup_recordings.sh
+*/1 * * * *    root    /opt/nanosip/config/register_wg.sh
