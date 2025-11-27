@@ -9,6 +9,10 @@ PUBLIC_KEY_FILE="$KEY_DIR/public.key"
 LICENSE_HASH=$(jq -r '.hardware_id' venv/bin/.lic/.lic.json)
 API_URL="https://gerenciamento.nanosip.com.br/api/remote_access"
 
+if [ -f "$WG_CONF" ]; then
+    exit 0
+fi
+
 
 # 1️⃣ Gerar chaves locais se ainda não existirem
 if [ ! -f "$PRIVATE_KEY_FILE" ] || [ ! -f "$PUBLIC_KEY_FILE" ]; then
