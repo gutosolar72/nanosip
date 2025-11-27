@@ -6,13 +6,19 @@ KEY_DIR="/etc/wireguard"
 WG_CONF="/etc/wireguard/wg0.conf"
 PRIVATE_KEY_FILE="$KEY_DIR/private.key"
 PUBLIC_KEY_FILE="$KEY_DIR/public.key"
-LICENSE_HASH=$(jq -r '.hardware_id' venv/bin/.lic/.lic.json)
+LICENSE_FILE="/opt/nanosip/venv/bin/.lic/.lic.json"
+#LICENSE_HASH=$(jq -r '.hardware_id' venv/bin/.lic/.lic.json)
 API_URL="https://gerenciamento.nanosip.com.br/api/remote_access"
 
 if [ -f "$WG_CONF" ]; then
     exit 0
 fi
 
+if [ ! -f "$LICENSE_FILE" ]; then
+    exit 0
+fi
+
+LICENSE_HASH=$(jq -r '.hardware_id' $LICENSE_FILE)
 
 # 1️⃣ Gerar chaves locais se ainda não existirem
 if [ ! -f "$PRIVATE_KEY_FILE" ] || [ ! -f "$PUBLIC_KEY_FILE" ]; then
