@@ -134,7 +134,7 @@ def generate_extensions_conf():
                 conf_parts.append(f"exten => {queue},n,Set(UNIQUEID_SAFE=${{CUT(UNIQUEID,.,1)}})")
                 conf_parts.append(f"exten => {queue},n,Set(ARQUIVO=${{CALLERID(num)}}-${{EXTEN}}-${{UNIQUEID_SAFE}})")
                 conf_parts.append(f"exten => {queue},n,MixMonitor(${{ARQUIVO}}.wav,b)")
-            conf_parts.append(f"exten => {exten},n,Answer()")
+            conf_parts.append(f"exten => {queue},n,Answer()")
             conf_parts.append(f"exten => {queue},n,Queue(${{EXTEN}})")
             if gravar_chamadas:
                 conf_parts.append(f"exten => {queue},n,StopMixMonitor()")
