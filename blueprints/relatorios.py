@@ -86,6 +86,26 @@ def parse_cdr():
 
     return registros
 
+def gerar_paginacao(page, total_pages, delta=2):
+    """
+    Gera uma lista de páginas inteligente:
+    - mostra primeira e última
+    - mostra páginas próximas da atual
+    - usa '...' quando necessário
+    """
+    pages = []
+    for p in range(1, total_pages + 1):
+        if (
+            p == 1 or
+            p == total_pages or
+            abs(p - page) <= delta
+        ):
+            pages.append(p)
+        else:
+            # coloca None para indicar "..."
+            if pages[-1] is not None:
+                pages.append(None)
+    return pages
 
 @relatorios_bp.route("/relatorios")
 @login_required
@@ -121,6 +141,8 @@ def relatorio_cdr():
                 r['recording'] = url_for('relatorios.recordings', filename=filename)
             else:
                 r['recording'] = None
+
+    paginas = gerar_paginacao(page, total_pages)
 
     return render_template(
         "relatorio_cdr.html",
