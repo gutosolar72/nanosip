@@ -150,6 +150,7 @@ def relatorio_cdr():
         page=page,
         total_pages=total_pages,
         has_record=has_record,
+        paginas=paginas,
         LICENSE_VALID=license_context(),
         LICENSE_MSG=license_message()
     )
