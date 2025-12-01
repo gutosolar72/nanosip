@@ -29,10 +29,9 @@ def get_system_info():
         # O comando foi simplificado para ser mais legível e robusto.
         command = ["asterisk", "-rx", "sip show peers"]
         peers_output = subprocess.check_output(command, text=True, stderr=subprocess.PIPE)
-        
         # Processa a saída para contar os ramais
         # Conta linhas que não são cabeçalho/rodapé e contêm "OK" (indicando um peer registrado)
-        ramais_registrados = [line for line in peers_output.splitlines() if "(OK)" in line]
+        ramais_registrados = [line for line in peers_output.splitlines() if "OK" in line]
         total_peers = len(peers_output.splitlines()) - 2 # Subtrai cabeçalho e rodapé
         
         info["ramais_cadastrados"] = f"{len(ramais_registrados)} registrados de {total_peers} configurados"
