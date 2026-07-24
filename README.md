@@ -29,23 +29,25 @@ O sistema é distribuído em três formatos, conforme a necessidade do cliente:
 - **Gerenciamento do sistema:** `system_manager.sh` / `system_info.py`
 
 ## Estrutura do projeto
+```
 nanosip/
-├── app.py                    # Aplicação principal (Flask)
-├── auth.py                   # Autenticação de usuários
-├── cadastro.py                # Cadastro de clientes/licenças
-├── database.py                # Camada de acesso a dados
-├── get_network_info.py        # Coleta de informações de rede
-├── reload_extensions.py       # Recarga de ramais no Asterisk
-├── reload_queues.py           # Recarga de filas no Asterisk
-├── reload_sip.py              # Recarga de configurações SIP
-├── system_info.py             # Informações do sistema
-├── system_manager.sh          # Script de gerenciamento do sistema
-├── update_network_files.py    # Atualização de configurações de rede
+├── app.py                     # Aplicação principal (Flask)
+├── auth.py                    # Autenticação de usuários
+├── cadastro.py                 # Cadastro de clientes/licenças
+├── database.py                 # Camada de acesso a dados (SQLite)
+├── get_network_info.py         # Coleta de informações de rede
+├── reload_extensions.py        # Recarga de ramais no Asterisk
+├── reload_queues.py            # Recarga de filas no Asterisk
+├── reload_sip.py               # Recarga de configurações SIP
+├── system_info.py              # Informações do sistema
+├── system_manager.sh           # Script de gerenciamento do sistema
+├── update_network_files.py     # Atualização de configurações de rede
 ├── blueprints/                 # Módulos da aplicação (Flask Blueprints)
 ├── config/                     # Arquivos de configuração
 ├── scripts/                    # Scripts auxiliares de instalação/manutenção
 ├── static/                     # Arquivos estáticos (CSS/JS/imagens)
 └── templates/                  # Templates HTML da interface web
+```
 ## Licenciamento
 
 Projeto de uso comercial, com controle de licenciamento próprio. Distribuição e uso sujeitos a licença adquirida junto ao autor.
